@@ -371,6 +371,12 @@ pub fn build(b: *std.Build) void {
         .flags = &base_flags,
     });
 
+    if (target.result.cpu.arch == .x86_64) {
+        lib.addCSourceFile(.{
+            .file = upstream.path("crypto/bn/asm/x86_64-gcc.c"),
+            .flags = &crypto_flags,
+        });
+    }
     lib.addCSourceFiles(.{
         .root = upstream.path("crypto"),
         .files = &.{
@@ -495,7 +501,6 @@ pub fn build(b: *std.Build) void {
             "bio/bss_null.c",
             "bio/bss_sock.c",
             "bio/ossl_core_bio.c",
-            "bn/asm/x86_64-gcc.c",
             "bn/bn_add.c",
             "bn/bn_asm.c",
             "bn/bn_blind.c",
@@ -1248,6 +1253,7 @@ pub fn build(b: *std.Build) void {
     lib.addIncludePath(b.path("include"));
     lib.addIncludePath(upstream.path("providers/common/include"));
     lib.addIncludePath(upstream.path("providers/implementations/include"));
+    lib.addIncludePath(upstream.path("crypto"));
     lib.addIncludePath(b.path("crypto"));
 
     lib.installHeadersDirectory(upstream.path("include"), "", .{});

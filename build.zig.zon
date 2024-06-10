@@ -5,8 +5,8 @@
 
     .dependencies = .{
         .openssl = .{
-            .url = "https://github.com/openssl/openssl/releases/download/openssl-3.3.0/openssl-3.3.0.tar.gz",
-            .hash = "1220d9c400445c9c3ed46f71ebdbc364b7b349473231884c2f6e540817d7b68553ae",
+            .url = "https://github.com/openssl/openssl/releases/download/openssl-3.3.1/openssl-3.3.1.tar.gz",
+            .hash = "122036841d37585c881aa56891a05e16e32115c71c09eb831ab1225938603702f08d",
         },
     },
 
